@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+    ports: ["5432:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app"]
+      interval: 2s
+      retries: 20
+  kronosdb:
+    image: ghcr.io/kronosdb/kronosdb:0.16.0
+    ports: ["50051:50051", "9240:9240"]
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:9240/ready"]
+      interval: 2s
+      retries: 20
+  # Optional local telemetry backend: Grafana with Tempo (traces), Loki (logs) and Prometheus behind one OTLP
+  # receiver. Not started by `infra:up`; `bun run telemetry:up` starts it, then set OTEL_EXPORTER_OTLP_ENDPOINT.
+  telemetry:
+    image: grafana/otel-lgtm:0.41.0
+    profiles: ["telemetry"]
+    ports: ["3001:3000", "4318:4318", "3200:3200"]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:3000/api/health || exit 1"]
+      interval: 2s
+      retries: 60

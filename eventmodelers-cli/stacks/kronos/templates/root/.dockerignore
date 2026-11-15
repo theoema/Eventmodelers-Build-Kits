@@ -1,0 +1,14 @@
+# Only what `src/main.ts` runs goes into the image: no secrets, no specs, no build kit.
+node_modules
+.git
+.env
+.env.*
+.run
+.build-kit
+.claude
+.eventmodelers
+test
+**/*.spec.ts
+docker-compose.yml
+Dockerfile
+.dockerignore

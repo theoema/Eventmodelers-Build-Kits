@@ -203,6 +203,13 @@ const STACKS = {
     useShared: true,
     needsBoardId: true,
   },
+  kronos: {
+    label: 'Kronos (kronos-ts on Bun, oRPC, Drizzle — KronosDB + Postgres)',
+    kitSubdir: 'build-kit',
+    kitDirName: '.build-kit',
+    useShared: true,
+    needsBoardId: true,
+  },
   kurrent: {
     label: 'Kurrent (Java, KurrentDB)',
     kitSubdir: 'build-kit',
