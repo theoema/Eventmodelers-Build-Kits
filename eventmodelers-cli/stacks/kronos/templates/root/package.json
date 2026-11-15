@@ -1,0 +1,39 @@
+{
+  "name": "kronos-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/main.ts",
+    "start": "bun src/main.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test src",
+    "db:generate": "drizzle-kit generate",
+    "ui-contract": "bun src/app/ui-contract.ts",
+    "infra:up": "docker compose up -d --wait",
+    "telemetry:up": "docker compose --profile telemetry up -d --wait telemetry"
+  },
+  "dependencies": {
+    "@kronos-ts/core": "0.13.0",
+    "@kronos-ts/kronosdb": "0.14.0",
+    "@kronos-ts/otlp": "0.7.8",
+    "@kronos-ts/postgres": "0.22.0",
+    "@orpc/contract": "2.0.0-beta.53",
+    "@orpc/openapi": "2.0.0-beta.53",
+    "@orpc/server": "2.0.0-beta.53",
+    "@orpc/zod": "2.0.0-beta.53",
+    "drizzle-orm": "0.45.4",
+    "postgres": "^4.1.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@kronos-ts/test": "0.10.0",
+    "@types/bun": "^1.4.4",
+    "drizzle-kit": "^0.31.11",
+    "typescript": "^7.0.2"
+  },
+  "imports": {
+    "#kit": "./src/kit/index.ts",
+    "#kit/*": "./src/kit/*.ts",
+    "#test": "./test/index.ts"
+  }
+}

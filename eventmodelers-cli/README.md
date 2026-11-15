@@ -21,6 +21,7 @@ npx @eventmodelers/cli init --stack axon             # Axon Framework (Java/Kotl
 npx @eventmodelers/cli init --stack opencqrs         # OpenCQRS (Java, EventSourcingDB)
 npx @eventmodelers/cli init --stack umadb            # UmaDB (Java)
 npx @eventmodelers/cli init --stack kurrent          # Kurrent (Java, KurrentDB)
+npx @eventmodelers/cli init --stack kronos           # Kronos (kronos-ts on Bun, KronosDB + Postgres)
 npx @eventmodelers/cli init --stack react            # React (frontend, board-polling sync) — TODO-marked, not yet filled in
 npx @eventmodelers/cli init --stack supabase-react   # React + Supabase (frontend, UI-only, realtime sync)
 npx @eventmodelers/cli init --stack classic          # Existing codebase (any language, typically CRUD) — no scaffold
@@ -100,7 +101,7 @@ your-project/
 └── CLAUDE.md                      ← agent instructions
 ```
 
-The six backend stacks (`node`, `supabase`, `axon`, `opencqrs`, `umadb`, `kurrent`) also scaffold a real project skeleton into your project root (`templates/root/`) — source layout, build files, migrations, etc.
+The seven backend stacks (`node`, `supabase`, `axon`, `opencqrs`, `umadb`, `kurrent`, `kronos`) also scaffold a real project skeleton into your project root (`templates/root/`) — source layout, build files, migrations, etc.
 
 `classic` ships no `templates/root/` at all — it installs only `.build-kit/` and the skills into an existing codebase (see "Adding slices to an existing codebase" above).
 
